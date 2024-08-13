@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "MyCharacter.generated.h"
+#include "TwinBlastPlayer.generated.h"
 
 class USpringArmComponent;
 class UCameraComponent;
@@ -13,7 +13,7 @@ class UInputAction;
 struct FInputActionValue;
 
 UCLASS()
-class MYGAME_API AMyCharacter : public ACharacter
+class MYGAME_API ATwinBlastPlayer : public ACharacter
 {
 	GENERATED_BODY()
 
@@ -43,7 +43,7 @@ class MYGAME_API AMyCharacter : public ACharacter
 
 public:
 	// Sets default values for this character's properties
-	AMyCharacter();
+	ATwinBlastPlayer();
 
 protected:
 	// Called when the game starts or when spawned
