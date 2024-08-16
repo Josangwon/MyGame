@@ -92,6 +92,10 @@ void ATwinBlastPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &ATwinBlastPlayer::Look);
+
+		// Fire
+		EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Started, this, &ATwinBlastPlayer::Fire);
+		EnhancedInputComponent->BindAction(FireAction, ETriggerEvent::Completed, this, &ATwinBlastPlayer::StopFire);
 	}
 	else
 	{
@@ -131,4 +135,14 @@ void ATwinBlastPlayer::Look(const FInputActionValue& Value)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void ATwinBlastPlayer::Fire()
+{
+	UE_LOG(LogTemp, Log, TEXT("Fire"));
+}
+
+void ATwinBlastPlayer::StopFire()
+{
+	UE_LOG(LogTemp, Log, TEXT("StopFire"));
 }
