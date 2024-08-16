@@ -45,6 +45,9 @@ class MYGAME_API ATwinBlastPlayer : public ACharacter
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputAction* FireAction;
 
+	UPROPERTY(VisibleAnywhere)
+	class UPlayerAnimInstance* AnimInstance;
+
 public:
 	// Sets default values for this character's properties
 	ATwinBlastPlayer();

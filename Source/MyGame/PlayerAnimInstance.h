@@ -14,4 +14,12 @@ class MYGAME_API UPlayerAnimInstance : public UAnimInstance
 {
 	GENERATED_BODY()
 	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Animation, meta = (AllowPrivateAccess = "true"))
+	UAnimMontage* FireMontage;
+
+public:
+	UPlayerAnimInstance();
+
+public:
+	void PlayMontage();
 };

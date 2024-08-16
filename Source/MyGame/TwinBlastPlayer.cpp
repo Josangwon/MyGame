@@ -7,11 +7,14 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 
-// input
+// Input
 #include "GameFramework/Controller.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
+
+// Animation
+#include "PlayerAnimInstance.h"
 
 // Sets default values
 ATwinBlastPlayer::ATwinBlastPlayer()
@@ -56,7 +59,7 @@ ATwinBlastPlayer::ATwinBlastPlayer()
 void ATwinBlastPlayer::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	AnimInstance = Cast<UPlayerAnimInstance>(GetMesh()->GetAnimInstance());
 }
 
 // Called every frame
@@ -139,10 +142,13 @@ void ATwinBlastPlayer::Look(const FInputActionValue& Value)
 
 void ATwinBlastPlayer::Fire()
 {
-	UE_LOG(LogTemp, Log, TEXT("Fire"));
+	if (IsValid(AnimInstance))
+	{
+		AnimInstance->PlayMontage();
+	}
 }
 
 void ATwinBlastPlayer::StopFire()
 {
-	UE_LOG(LogTemp, Log, TEXT("StopFire"));
+
 }
