@@ -60,6 +60,7 @@ void ATwinBlastPlayer::BeginPlay()
 {
 	Super::BeginPlay();
 	AnimInstance = Cast<UPlayerAnimInstance>(GetMesh()->GetAnimInstance());
+	AnimInstance->OnMontageEnded.AddDynamic(this, &ATwinBlastPlayer::OnAttackMontageEnded);
 }
 
 // Called every frame
@@ -151,4 +152,9 @@ void ATwinBlastPlayer::Fire()
 void ATwinBlastPlayer::StopFire()
 {
 
+}
+
+void ATwinBlastPlayer::OnAttackMontageEnded(UAnimMontage* Montage, bool Interrupted)
+{
+	//Todo
 }

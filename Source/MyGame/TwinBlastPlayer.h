@@ -74,4 +74,8 @@ protected:
 	void Look(const FInputActionValue& Value);
 	void Fire();
 	void StopFire();
+
+public:
+	UFUNCTION()
+	void OnAttackMontageEnded(UAnimMontage* Montage, bool Interrupted);
 };
