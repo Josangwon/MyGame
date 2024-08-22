@@ -156,5 +156,32 @@ void ATwinBlastPlayer::StopFire()
 
 void ATwinBlastPlayer::OnAttackMontageEnded(UAnimMontage* Montage, bool Interrupted)
 {
-	//Todo
+	float AttackRange = 10000.f;
+
+	FHitResult HitResult;
+
+	FVector Center = GetActorLocation();
+	FVector Forwad = Center + GetActorForwardVector() * AttackRange;
+	FCollisionQueryParams params;
+	params.AddIgnoredActor(this);
+
+	bool Result = GetWorld()->LineTraceSingleByChannel
+	(
+		OUT HitResult,
+		Center,
+		Forwad,
+		ECollisionChannel::ECC_GameTraceChannel1,
+		params
+	);
+
+	if (Result)
+	{
+		UE_LOG(LogTemp, Log, TEXT("Hit"));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Log, TEXT("Not Hit"));
+	}
+
+	DrawDebugLine(GetWorld(), Center, HitResult.Location, FColor::Green);
 }
